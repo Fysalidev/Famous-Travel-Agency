@@ -22,5 +22,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// New file name Test to Navbar
