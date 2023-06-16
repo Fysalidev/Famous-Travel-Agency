@@ -26,7 +26,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("C'est ici que ça plante 1");
+          throw new Error("Invalid credentials");
         }
 
         const user = await prisma.user.findUnique({
@@ -36,7 +36,7 @@ const handler = NextAuth({
         });
 
         if (!user || !user?.hashedPassword) {
-          throw new Error("C'est ici que ça plante 2");
+          throw new Error("Invalid credentials");
         }
 
         const isCorrectPassword = await bcrypt.compare(
@@ -53,7 +53,7 @@ const handler = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/",
   },
   debug: process.env.NODE_ENV === "development",
   session: {
