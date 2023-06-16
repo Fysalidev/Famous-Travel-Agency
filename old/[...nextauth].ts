@@ -1,5 +1,5 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { AuthOptions } from "next-auth";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -53,7 +53,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/auth/signin",
   },
   debug: process.env.NODE_ENV === "development",
   session: {
